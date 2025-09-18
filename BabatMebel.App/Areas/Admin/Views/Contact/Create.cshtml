@@ -1,0 +1,27 @@
+﻿@model ContactCreateDto
+@{
+    Layout = Layout;
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="container">
+    <form method="post">
+        <label asp-for="FirstName"></label><br>
+        <input type="text" asp-for="FirstName"><br><br>
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+
+        <label asp-for="LastName"></label><br>
+        <input type="text" asp-for="LastName"><br><br>
+        <span asp-validation-for="LastName" class="text-danger"></span>
+
+        <label asp-for="Email"></label><br>
+        <input type="text" asp-for="Email"><br><br>
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+        <label asp-for="Message"></label><br>
+        <input type="text" asp-for="Message"><br><br>
+        <span asp-validation-for="Message" class="text-danger"></span>
+        <input type="submit" class="btn btn-success" value="Submit">
+        @Html.AntiForgeryToken()
+    </form>
+</div>

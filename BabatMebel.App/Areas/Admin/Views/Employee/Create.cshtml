@@ -1,0 +1,32 @@
+﻿@model EmployeeCreateDto
+@{
+    Layout = Layout;
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="container">
+    <form method="post">
+
+        <label asp-for="FirstName"></label><br>
+        <input type="text" asp-for="FirstName"><br><br>
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+        <br />
+
+        <label asp-for="LastName"></label><br>
+        <input type="text" asp-for="LastName"><br><br>
+        <span asp-validation-for="LastName" class="text-danger"></span>
+        <br />
+
+        <label asp-for="Description"></label><br>
+        <input type="text" asp-for="Description"><br><br>
+        <span asp-validation-for="Description" class="text-danger"></span>
+        <br />
+
+        <select class="form-select" aria-label="Default select example" asp-for="PositionIds" asp-items="@(new SelectList(ViewBag.Positions, "Id", "Name"))">
+            <option selected>Open this select menu</option>
+
+        </select>
+        <input type="submit" class="btn btn-success" value="Submit">
+        @Html.AntiForgeryToken()
+    </form>
+</div>

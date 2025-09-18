@@ -1,0 +1,32 @@
+﻿@model List<PositionGetDto>
+@{
+    int i = 0;
+}
+
+<div class="container">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var position in Model)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@position.Name</td>
+                    <td><a asp-controller="position" asp-action="delete" asp-route-id="@position.Id" class="btn btn-danger">Delete</a></td>
+                    <td><a asp-controller="position" asp-action="update" asp-route-id="@position.Id" class="btn btn-primary">Edit</a></td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+    <div style="float:right;">
+        <a asp-controller="position" asp-action="create" class="btn btn-success">Create position</a>
+    </div>
+</div>

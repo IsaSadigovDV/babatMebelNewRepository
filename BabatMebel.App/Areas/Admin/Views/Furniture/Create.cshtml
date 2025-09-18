@@ -1,0 +1,28 @@
+﻿@model FurnitureCreateDto
+@{
+    Layout = Layout;
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<div class="container">
+    <form enctype="multipart/form-data" method="post">
+
+        <label asp-for="Name"></label><br>
+        <input type="text" asp-for="Name"><br><br>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <br />
+
+        <label asp-for="Price"></label><br>
+        <input type="text" asp-for="Price"><br><br>
+        <span asp-validation-for="Price" class="text-danger"></span>
+        <br />
+
+        <label asp-for="Image"></label><br>
+        <input type="file" asp-for="Image"><br><br>
+        <span asp-validation-for="Image" class="text-danger"></span>
+        <br />
+
+        <input type="submit" class="btn btn-success" value="Submit">
+        @Html.AntiForgeryToken()
+    </form>
+</div>
