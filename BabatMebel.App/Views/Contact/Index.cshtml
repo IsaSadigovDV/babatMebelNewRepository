@@ -71,7 +71,8 @@
                         </div>
                     </div>
 
-                    <form method="post">
+                    <form method="post" asp-action="Post" asp-controller="Contact">
+                        @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
@@ -93,7 +94,7 @@
 
                         <div class="form-group mb-5">
                             <label class="text-black" asp-for="@Model.Message">Message</label>
-                            <textarea name="" class="form-control" asp-for="@Model.Message" cols="30" rows="5"></textarea>
+                            <textarea name="Message" id="Message" ></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary-hover-outline" >Send Message</button>
                     </form>

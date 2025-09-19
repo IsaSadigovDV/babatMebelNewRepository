@@ -9,6 +9,7 @@ namespace BabatMebel.App.Entities
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+        public string Image { get; set; }
         public string ImageUrl { get; set; }
 
         [Required]

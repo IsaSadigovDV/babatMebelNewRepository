@@ -22,7 +22,7 @@
                     <th scope="row">@i</th>
                     <td>@furniture.Name</td>
                     <td>@furniture.Price</td>
-                    <td><img src="~/@furniture.ImageUrl" alt="Alternate Text" /></td>
+                    <td><img src="~/@furniture.Image" alt="Alternate Text" /></td>
                     <td><a asp-controller="furniture" asp-action="delete" asp-route-id="@furniture.Id" class="btn btn-danger">Delete</a></td>
                     <td><a asp-controller="furniture" asp-action="update" asp-route-id="@furniture.Id" class="btn btn-primary">Edit</a></td>
                 </tr>

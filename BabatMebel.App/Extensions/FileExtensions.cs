@@ -35,5 +35,31 @@
                 throw;
             }
         }
+
+        public static bool DeleteFile(string root, string path, string fileUrl)
+        {
+            if (string.IsNullOrWhiteSpace(fileUrl)) return false;
+
+            string fileName;
+            if (Uri.TryCreate(fileUrl, UriKind.Absolute, out var uri))
+            {
+                fileName = Path.GetFileName(uri.LocalPath);
+            }
+            else
+            {
+                fileName = fileUrl;
+            }
+
+            string fullPath = Path.Combine(root, path, fileName);
+
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+                return true;
+
+            }
+
+            return false;
+        }
     }
 }

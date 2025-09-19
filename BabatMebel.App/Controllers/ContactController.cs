@@ -9,6 +9,7 @@ namespace BabatMebel.App.Controllers
     {
         private readonly IContactReadRepository _contactRead;
         private readonly IContactWriteRepository _contactWrite;
+
         public ContactController(IContactReadRepository contactRead, IContactWriteRepository contactWrite)
         {
             _contactRead = contactRead;
@@ -21,11 +22,12 @@ namespace BabatMebel.App.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] ContactCreateDto dto)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Post(ContactCreateDto dto)
         {
             if (!ModelState.IsValid)
             {
-                return View(dto);
+                return View("Index", dto);
             }
 
             var contact = new Contact

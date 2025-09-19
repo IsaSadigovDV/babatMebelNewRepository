@@ -2,7 +2,9 @@
 {
     public class FurnitureUpdateDto
     {
-        public IFormFile? Image { get; set; }
+        public string? Image { get; set; }
+        public string? ImageUrl { get; set; }
+        public IFormFile? ImageUpload { get; set; }
         public string? Name { get; set; }
         public double? Price { get; set; }
     }
