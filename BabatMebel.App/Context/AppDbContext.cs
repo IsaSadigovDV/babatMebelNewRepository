@@ -1,9 +1,10 @@
 ﻿using BabatMebel.App.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BabatMebel.App.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
         // dbset -> databasaya set ele yeni ki ef core vasitesile sql-e sorgu gonderirik ve db set elediyimiz classlar sql terefde table olurlar
         public DbSet<Author> Authors { get; set; }

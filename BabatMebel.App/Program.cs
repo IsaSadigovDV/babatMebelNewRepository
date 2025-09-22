@@ -1,5 +1,6 @@
 using BabatMebel.App.Constants;
 using BabatMebel.App.Context;
+using BabatMebel.App.Entities;
 using BabatMebel.App.Repository.Abstracts.RContact;
 using BabatMebel.App.Repository.Abstracts.REmployee;
 using BabatMebel.App.Repository.Abstracts.RFurniture;
@@ -8,6 +9,7 @@ using BabatMebel.App.Repository.Concretes.RContact;
 using BabatMebel.App.Repository.Concretes.REmployee;
 using BabatMebel.App.Repository.Concretes.RFurniture;
 using BabatMebel.App.Repository.Concretes.RPosition;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BabatMebel.App
@@ -36,6 +38,31 @@ namespace BabatMebel.App
             builder.Services.AddDbContext<AppDbContext>(opt =>
             {
                 opt.UseSqlServer(builder.Configuration.GetConnectionString(ConnectionNames.DefaultConnectionName));
+            });
+
+            builder.Services.AddIdentity<AppUser, IdentityRole>()
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<AppDbContext>();
+
+            builder.Services.Configure<IdentityOptions>(opt =>
+            {
+                // password
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireUppercase = true;
+                opt.Password.RequireNonAlphanumeric = true;
+                opt.Password.RequiredLength = 8;
+                opt.Password.RequiredUniqueChars = 1;
+
+                //lockout
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+                opt.Lockout.MaxFailedAccessAttempts = 3;
+                opt.Lockout.AllowedForNewUsers = true;
+
+                // User settings.
+                opt.User.AllowedUserNameCharacters =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                opt.User.RequireUniqueEmail = false;
             });
 
             var app = builder.Build();
