@@ -6,5 +6,7 @@ namespace BabatMebel.App.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public List<Basket> Baskets { get; set; } = new List<Basket>();
     }
 }

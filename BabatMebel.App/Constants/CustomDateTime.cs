@@ -1,8 +1,7 @@
 ﻿namespace BabatMebel.App.Constants
 {
-    public class ConnectionNames
+    public static class CustomDateTime
     {
-        public const string DefaultConnectionName = "Default";
         public static DateTime AzerbaijaniDate = DateTime.UtcNow.AddHours(4);
     }
 }

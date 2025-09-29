@@ -15,5 +15,7 @@ namespace BabatMebel.App.Entities
         [Required]
         [Range(0, 10000)]
         public double Price { get; set; }
+
+        public List<BasketItem> BasketItems { get; set; } = new List<BasketItem>();
     }
 }

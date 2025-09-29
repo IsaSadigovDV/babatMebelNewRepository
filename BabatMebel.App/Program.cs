@@ -1,10 +1,14 @@
 using BabatMebel.App.Constants;
 using BabatMebel.App.Context;
 using BabatMebel.App.Entities;
+using BabatMebel.App.Repository.Abstracts.RBasket;
+using BabatMebel.App.Repository.Abstracts.RBasketItem;
 using BabatMebel.App.Repository.Abstracts.RContact;
 using BabatMebel.App.Repository.Abstracts.REmployee;
 using BabatMebel.App.Repository.Abstracts.RFurniture;
 using BabatMebel.App.Repository.Abstracts.RPosition;
+using BabatMebel.App.Repository.Concretes.RBasket;
+using BabatMebel.App.Repository.Concretes.RBasketItem;
 using BabatMebel.App.Repository.Concretes.RContact;
 using BabatMebel.App.Repository.Concretes.REmployee;
 using BabatMebel.App.Repository.Concretes.RFurniture;
@@ -34,6 +38,12 @@ namespace BabatMebel.App
 
             builder.Services.AddScoped<IFurnitureReadRepository, FurnitureReadRepository>();
             builder.Services.AddScoped<IFurnitureWriteRepository, FurnitureWriteRepository>();
+
+            builder.Services.AddScoped<IBasketReadRepository, BasketReadRepository>();
+            builder.Services.AddScoped<IBasketWriteRepository, BasketWriteRepository>();
+
+            builder.Services.AddScoped<IBasketItemReadRepository, BasketItemReadRepository>();
+            builder.Services.AddScoped<IBasketItemWriteRepository, BasketItemWriteRepository>();
 
             builder.Services.AddDbContext<AppDbContext>(opt =>
             {
