@@ -13,6 +13,8 @@ using BabatMebel.App.Repository.Concretes.RContact;
 using BabatMebel.App.Repository.Concretes.REmployee;
 using BabatMebel.App.Repository.Concretes.RFurniture;
 using BabatMebel.App.Repository.Concretes.RPosition;
+using BabatMebel.App.Services.Abstractions;
+using BabatMebel.App.Services.Concretes;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,6 +46,9 @@ namespace BabatMebel.App
 
             builder.Services.AddScoped<IBasketItemReadRepository, BasketItemReadRepository>();
             builder.Services.AddScoped<IBasketItemWriteRepository, BasketItemWriteRepository>();
+
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IBasketService, BasketService>();
 
             builder.Services.AddDbContext<AppDbContext>(opt =>
             {
@@ -90,7 +95,6 @@ namespace BabatMebel.App
             app.UseRouting();
 
             app.UseAuthorization();
-
 
             app.MapAreaControllerRoute(
                 name: "admin",

@@ -168,6 +168,7 @@ namespace BabatMebel.App.Controllers
                 }
                 return View(dto);
             }
+
             return RedirectToAction(nameof(GetUserInfo));
         }
     }

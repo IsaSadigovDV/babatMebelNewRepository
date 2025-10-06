@@ -1,4 +1,7 @@
-﻿<!doctype html>
+﻿@using BabatMebel.App.Services;
+@using BabatMebel.App.Services.Abstractions
+@inject IUserService userservice;
+<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -43,9 +46,13 @@
 				</ul>
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+					@* @{
+						var user =await userservice.FindUser(User.Identity.Name);
+					} *@
 					@if(User.Identity.IsAuthenticated)
 					{
-						<li><a class="nav-link" asp-controller="account" asp-action="GetUserInfo"><span>@User.Identity.Name</span></a></li>
+
+						<li><a class="nav-link" asp-controller="account" asp-action="GetUserInfo"><span>User.Identity.Name</span></a></li>
 						<li><a class="nav-link" asp-action="logout" asp-controller="account" >Logout</a></li>
 
 					}
